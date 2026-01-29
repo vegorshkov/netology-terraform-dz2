@@ -12,6 +12,20 @@ https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task1/Console1.pn
 https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task1/1.5%20curl%20config%20command-1.png
 
 
-ответы:
+Ответы:
 https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task1#readme
+и скриншоты с нумерацией: https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task1
+
+Задание 2
+
+Ответ, заведен файл автоматического указания переменных, в стандартных variables.tf прописаны типы переменных,  в main.tf указаны сами переменные. 
+В самом  файле terraform.tfvars  указаны значения, и файл добавлен в  .gitignore
+
+При проходе terraform apply  изменений  не обнаружено.
+
+Принтскрины предоставлены:  
+https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task2
+Ответ:  https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task2/2.3%20Terraform%20Plan%20-%2001.png  
+
+Задание 3
 
