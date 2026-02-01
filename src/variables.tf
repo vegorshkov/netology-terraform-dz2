@@ -15,18 +15,38 @@
 
 #     Входящие переменные, MAP type. Задание2.  указаны в terraform.tfvars
 
+variable "vms_resources" {
+  type = map(object({
+    cores         = number
+    memory        = number
+    core_fraction = number
+    hdd_size      = number
+    hdd_type      = string
+    update        = bool
+  }))
+  description = "Системные ресурсы для vm Задание №6"
+}
+
+variable "metadata" {
+  type = object({
+    serial-port-enable = number
+    ssh-keys           = string
+  })
+  description = "Метаданные для vm Задание №6"
+}
+
 
 variable "vm_web_config" {
   type = map(object({
     zone               = string
     name               = string
     platform_id        = string
-    cores              = number
-    memory             = number
-    core_fraction      = number
+    # cores              = number # закомментировано по заданию 6
+    # memory             = number # закомментировано по заданию 6
+    # core_fraction      = number # закомментировано по заданию 6
     preemptible        = bool
-    serial_port_enable = bool
-    disk_type          = string
+    # serial_port_enable = bool
+    # disk_type          = string # закомментировано по заданию 6
     nat_enabled        = bool
   }))
   
@@ -38,12 +58,12 @@ variable "vm_db_config" {
     zone               = string
     name               = string
     platform_id        = string
-    cores              = number
-    memory             = number
-    core_fraction      = number
+    # cores              = number # закомментировано по заданию 6
+    # memory             = number # закомментировано по заданию 6
+    # core_fraction      = number # закомментировано по заданию 6
     preemptible        = bool
-    serial_port_enable = bool
-    disk_type          = string
+    # serial_port_enable = bool
+    # disk_type          = string # закомментировано по заданию 6
     nat_enabled        = bool
   }))
   
@@ -90,12 +110,12 @@ variable "vpc_name" {
 }
 
 
-###ssh vars
+# ###ssh vars
 
-variable "vms_ssh_root_key" {
-  type        = string
-  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGsV4FbyZ3PqkzeSGNvDLFHBY7xv8t4oWavwhzwqErDe"
-  description = "ssh-keygen -t ed25519"
-}
+# variable "vms_ssh_root_key" {
+#   type        = string
+#   default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGsV4FbyZ3PqkzeSGNvDLFHBY7xv8t4oWavwhzwqErDe"
+#   description = "ssh-keygen -t ed25519"
+# }
 
 

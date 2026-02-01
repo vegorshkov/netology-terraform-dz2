@@ -18,16 +18,23 @@ resource "yandex_compute_instance" "platform" {
   name        = var.vm_web_config["web"].name
   platform_id = var.vm_web_config["web"].platform_id
 
+  allow_stopping_for_update = var.vms_resources["web"].update
+  
   resources {
-    cores         = var.vm_web_config["web"].cores
-    memory        = var.vm_web_config["web"].memory
-    core_fraction = var.vm_web_config["web"].core_fraction
+    # cores         = var.vm_web_config["web"].cores  # task6
+    # memory        = var.vm_web_config["web"].memory # task6
+    # core_fraction = var.vm_web_config["web"].core_fraction #task6
+    cores         = var.vms_resources["web"].cores
+    memory        = var.vms_resources["web"].memory
+    core_fraction = var.vms_resources["web"].core_fraction
   }
 
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
-      type = var.vm_web_config["web"].disk_type
+      # type = var.vm_web_config["web"].disk_type
+      type = var.vms_resources["web"].hdd_type
+      size     = var.vms_resources["web"].hdd_size #  новый параметр указан в task6
     }
   }
 
@@ -41,8 +48,10 @@ resource "yandex_compute_instance" "platform" {
   }
 
   metadata = {
-    serial-port-enable = var.vm_web_config["web"].serial_port_enable
-    ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
+    # serial-port-enable = var.vm_web_config["web"].serial_port_enable
+    serial-port-enable = var.metadata.serial-port-enable
+    # ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
+    ssh-keys           = var.metadata.ssh-keys
   }
 
 }
@@ -53,15 +62,21 @@ resource "yandex_compute_instance" "db" {
 #  name        = var.vm_db_config["db"].name
   platform_id = var.vm_db_config["db"].platform_id
   resources {
-    cores         = var.vm_db_config["db"].cores
-    memory        = var.vm_db_config["db"].memory
-    core_fraction = var.vm_db_config["db"].core_fraction
+    # cores         = var.vm_db_config["db"].cores
+    cores         = var.vms_resources["db"].cores
+    # memory        = var.vm_db_config["db"].memory
+    memory        = var.vms_resources["db"].memory
+    # core_fraction = var.vm_db_config["db"].core_fraction
+    core_fraction = var.vms_resources["db"].core_fraction
+
   }
 
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
-      type     = var.vm_db_config["db"].disk_type
+      # type     = var.vm_db_config["db"].disk_type
+      type     = var.vms_resources["db"].hdd_type
+      size     = var.vms_resources["db"].hdd_size
     }
   }
 
@@ -74,8 +89,10 @@ resource "yandex_compute_instance" "db" {
   }
 
   metadata = {
-    serial-port-enable = var.vm_db_config["db"].serial_port_enable  # увидел еще один хардкод)
-    ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
+    # serial-port-enable = var.vm_db_config["db"].serial_port_enable  # увидел еще один хардкод)
+    serial-port-enable = var.metadata.serial-port-enable
+    # ssh-keys           = "ubuntu:${var.vms_ssh_root_key}"
+    ssh-keys           = var.metadata.ssh-keys
   }
 }
 
