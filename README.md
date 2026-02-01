@@ -39,3 +39,28 @@ https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task5/README.md
 Задание 6
 https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task6/README.md
 
+Задание 7 *
+Ответы:
+1.  > local.test_list[1]
+"staging"
+
+2. > length(local.test_list)
+3
+
+3.  > local.test_map["admin"]
+"John"
+>  
+
+4. > "${local.test_map["admin"]} is admin for ${local.test_list[2]} servers based on OS ${local.servers[local.test_list[2]].image} with ${local.servers[local.test_list[2]].cpu} vcpu,  ${local.servers[local.test_list[2]].ram} ram and ${length(local.servers[local.test_list[2]].disks)} virtual disks"
+"John is admin for production servers based on OS ubuntu-20-04 with 10 vcpu,  40 ram and 4 virtual disks"
+
+Задача 8 *
+Все принтскрины ответов представлены в разделе task8
+
+Задача 9 *
+Создам несколько tf файлов, для определения настройки самого роутера и настройки сетей с маршрутизацией.
+Протестирую source и destination nat через роутер.
+До перенастройки обе машины имеют внешние ip и по внутренним сетям 10.0.1.x/24 и 10.0.2.x/24 видят нормально друг-друга.
+
+
+

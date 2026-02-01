@@ -11,7 +11,10 @@
 # type = tuple([])  # Кортеж с фиксированной структурой
 # type = any        # Любой тип
 
-
+variable "test" {
+type = list(map(list(string)))
+description = "задача 8"
+}
 
 #     Входящие переменные, MAP type. Задание2.  указаны в terraform.tfvars
 
