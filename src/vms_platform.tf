@@ -14,6 +14,7 @@ resource "yandex_vpc_subnet" "subnet_b" {
 
 resource "yandex_compute_instance" "platform" {
   zone        = var.vm_web_config["web"].zone
+#   name      = locals.vm_web_name #  переменная задана динамически через local.tf
   name        = var.vm_web_config["web"].name
   platform_id = var.vm_web_config["web"].platform_id
 
@@ -48,7 +49,8 @@ resource "yandex_compute_instance" "platform" {
 
 resource "yandex_compute_instance" "db" {
   zone        = var.vm_db_config["db"].zone
-  name        = var.vm_db_config["db"].name
+  name        = local.vm_db_name  #  переменная задана динамически через local.tf
+#  name        = var.vm_db_config["db"].name
   platform_id = var.vm_db_config["db"].platform_id
   resources {
     cores         = var.vm_db_config["db"].cores
