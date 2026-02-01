@@ -28,4 +28,11 @@ https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task2
 Ответ:  https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task2/2.3%20Terraform%20Plan%20-%2001.png  
 
 Задание 3
+https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task3#readme
+
+Задание 4
+https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task4/create_outputs-04.png
+
+Задание 5
+
 
