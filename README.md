@@ -34,5 +34,8 @@ https://github.com/vegorshkov/netology-terraform-dz2/tree/main/task3#readme
 https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task4/create_outputs-04.png
 
 Задание 5
+https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task5/README.md
 
+Задание 6
+https://github.com/vegorshkov/netology-terraform-dz2/blob/main/task6/README.md
 
