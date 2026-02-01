@@ -18,6 +18,7 @@
 
 variable "vm_web_config" {
   type = map(object({
+    zone               = string
     name               = string
     platform_id        = string
     cores              = number
@@ -32,56 +33,60 @@ variable "vm_web_config" {
   description = "параметры виртуальной машины"
 }
 
-variable vm_web_cloud = {
-  type = map(object(  {
-    cloud_id  = string
-    folder_id = string
-                      }
-            )      )
-  description = "параметры облака, не секретные"
+variable "vm_db_config" {
+  type = map(object({
+    zone               = string
+    name               = string
+    platform_id        = string
+    cores              = number
+    memory             = number
+    core_fraction      = number
+    preemptible        = bool
+    serial_port_enable = bool
+    disk_type          = string
+    nat_enabled        = bool
+  }))
+  
+  description = "параметры виртуальной машины"
 }
 
 
+variable "vm_web_cloud" {
+  type = map(object({
+    cloud_id  = string
+    folder_id = string
+  }))
+  description = "параметры облака, не секретные"
+}
 
-# variable "cloud_id" {
-#   type        = string
-#   description = "cloud id"
-#   default     =  var.vm_web_cloud_id  # "b1gb43b8b56tkbsflrmt"
-#   validation  = 
-# }
-
-# variable "folder_id" {
-#   type        = string
-#   description = "folder id"
-#   default     = "b1g883r36u9293g7u1gc"
-# }
-
-
-# variable "cloud_id" {
-#   type        = string
-#   description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
-# }
-
-# variable "folder_id" {
-#   type        = string
-#   description = "https://cloud.yandex.ru/docs/resource-manager/operations/folder/get-id"
-# }
-
-variable "default_zone" {
+variable "zone_a" {
   type        = string
   default     = "ru-central1-a"
   description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
 }
-variable "default_cidr" {
+
+variable "zone_b" {
+type          = string
+default       = "ru-central1-b"
+description   = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
+}
+
+variable "subnet_a_cidr" {
   type        = list(string)
   default     = ["10.0.1.0/24"]
+  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+}
+
+variable "subnet_b_cidr" {
+  type        = list(string)
+  default     = ["10.0.2.0/24"]
   description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
 }
 
 variable "vpc_name" {
   type        = string
   default     = "develop"
-  description = "VPC network & subnet name"
+  description = "VPC network name+"
 }
 
 
