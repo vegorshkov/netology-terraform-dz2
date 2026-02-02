@@ -1,16 +1,17 @@
-resource "yandex_vpc_subnet" "subnet_a" {
-  name           = "${var.vpc_name}-a"
-  zone           = var.zone_a
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.subnet_a_cidr
-}
+# # Задача №9  ресурс перенесен в net-gw-01-lan.tf
+# resource "yandex_vpc_subnet" "subnet_a" {
+#   name           = "${var.vpc_name}-a"
+#   zone           = var.zone_a
+#   network_id     = yandex_vpc_network.develop.id
+#   v4_cidr_blocks = var.subnet_a_cidr
+# }
 
-resource "yandex_vpc_subnet" "subnet_b" {
-  name           = "${var.vpc_name}-b"
-  zone           = var.zone_b
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.subnet_b_cidr
-}
+# resource "yandex_vpc_subnet" "subnet_b" {
+#   name           = "${var.vpc_name}-b"
+#   zone           = var.zone_b
+#   network_id     = yandex_vpc_network.develop.id
+#   v4_cidr_blocks = var.subnet_b_cidr
+# }
 
 resource "yandex_compute_instance" "platform" {
   zone        = var.vm_web_config["web"].zone
@@ -19,7 +20,7 @@ resource "yandex_compute_instance" "platform" {
   platform_id = var.vm_web_config["web"].platform_id
 
   allow_stopping_for_update = var.vms_resources["web"].update
-  
+
   resources {
     # cores         = var.vm_web_config["web"].cores  # task6
     # memory        = var.vm_web_config["web"].memory # task6

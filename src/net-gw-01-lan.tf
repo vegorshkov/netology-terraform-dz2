@@ -40,4 +40,3 @@ resource "yandex_vpc_route_table" "nat_route_table" {
     gateway_id         = yandex_vpc_gateway.nat_gateway.id
   }
 }
-

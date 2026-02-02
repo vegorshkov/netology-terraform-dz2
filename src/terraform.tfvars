@@ -50,7 +50,8 @@ vm_web_config = {
     preemptible        = true
     serial_port_enable = 1
 #    disk_type          = "network-hdd" # закомментировано по заданию 6
-    nat_enabled        = true
+    # nat_enabled        = true
+    nat_enabled  =  false   # выключаем внешние ip у виртуалок
   }
 }
 
@@ -65,7 +66,8 @@ vm_db_config = {
     preemptible        = true 
     serial_port_enable = 1
     # disk_type          = "network-hdd"  # закомментировано по заданию 6
-    nat_enabled        = true
+    # nat_enabled        = true
+    nat_enabled       = false
   }
 }
 
